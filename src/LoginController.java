@@ -30,6 +30,13 @@ public class LoginController {
 				GUI.resetPanel();
 			}
 		});
+		
+		//quit button
+		GUI.exitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 	}	
 
 }

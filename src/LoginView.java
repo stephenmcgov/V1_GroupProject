@@ -51,17 +51,17 @@ public class LoginView {
 		
 		resetButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		resetButton.setForeground(Color.BLACK);
-		resetButton.setBackground(Color.BLACK);
+		resetButton.setBackground(Color.LIGHT_GRAY);
 		resetButton.setBounds(214, 192, 72, 28);
 		
 		submitButton.setForeground(Color.BLACK);
 		submitButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		submitButton.setBackground(Color.BLACK);
+		submitButton.setBackground(Color.LIGHT_GRAY);
 		submitButton.setBounds(129, 192, 88, 28);
 		
 		exitButton.setForeground(Color.BLACK);
 		exitButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		exitButton.setBackground(Color.BLACK);
+		exitButton.setBackground(Color.LIGHT_GRAY);
 		exitButton.setBounds(296, 192, 72, 28);
 		
 		
