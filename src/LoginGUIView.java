@@ -59,7 +59,7 @@ public class LoginGUIView {
 	JLabel nameLabel = new JLabel("Enter Name");
 	JTextField passwordField = new JTextField();;
 	JLabel passwordLabel = new JLabel("Enter Password");
-	JLabel errorLabel = new JLabel("Login Format Error!");
+	JLabel errorLabel = new JLabel("");
 	JButton submitButton = new JButton("Submit");
 	JButton resetButton = new JButton("RESET");
 	JButton quitButton = new JButton("QUIT");
@@ -95,9 +95,9 @@ public class LoginGUIView {
 	}
 	
 	public void setLoginState(Boolean boolExists) {
-		boolean exists = boolExists;
+		//boolean exists = boolExists;
 				
-		if(exists) {
+		if(boolExists) {
 			//show hidden elements
 			resetButton.setVisible(true);
 			quitButton.setVisible(true);

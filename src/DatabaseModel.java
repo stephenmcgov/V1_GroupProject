@@ -45,32 +45,34 @@ public class DatabaseModel {
 			this.loggedIn = loggedIn;
 		}
 		
-		public boolean checkPlayer(String playerName, String catchphrase) {
+		public boolean checkUser(String userName, String password) {
 			boolean exists = false;
-			System.out.println("looking for player:"+playerName+" "+catchphrase);
+			System.out.println("looking for user:"+userName+" "+password);
 			try {
 				
 				this.stmt = conn.createStatement();
-				String query = "SELECT * FROM players WHERE player_name LIKE '"+playerName+"';";
+				String query = "SELECT * FROM users WHERE user_name LIKE '"+userName+"';";
 				try (Statement stmt = conn.createStatement()) {
 				     ResultSet rs = stmt.executeQuery(query);
 				     while (rs.next()) {
-				    	 if(rs.getString("player_name")==playerName);
+				    	 if(rs.getString("user_name")==userName);
 				    	 {
 				    		 String s = rs.getString("salt");
 				    		 byte[] salt = s.getBytes();
-				    		 String stored_hpw = rs.getString("catchphrase");
+				    		 String stored_hpw = rs.getString("user_password");
 				    		 MessageDigest md = MessageDigest.getInstance("SHA-256");
 				    		 md.update(salt);
 				    		 
-				    		 byte[] hashedPassword = md.digest(catchphrase.getBytes(StandardCharsets.UTF_8));
-				    		 hashedPassword = md.digest(catchphrase.getBytes(StandardCharsets.UTF_8));
+				    		 byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
+				    		 hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
 				    		 String hpw = Arrays.toString(hashedPassword);
 				    		 
 				    		 if(hpw.equals(stored_hpw)) {
 				    			exists = true;
-				    		 	System.out.println("existing player:"+playerName);
+				    		 	System.out.println("existing user:"+userName);
 				    		 }
+				    		 else
+				    			System.out.println("could not find user!");
 				    	 }
 				     }
 				}

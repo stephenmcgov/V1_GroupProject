@@ -2,19 +2,20 @@
 USE store;
 
 -- uncomment these if you need to run query more than once
--- DROP TABLE orders;
--- DROP TABLE products;
--- DROP TABLE users;
+DROP TABLE orders;
+DROP TABLE products;
+DROP TABLE users;
 
 CREATE TABLE users(
 	user_id INTEGER,
-	user_name VARCHAR(30) NOT NULL, 
+	user_name VARCHAR(30) NOT NULL,
+    salt VARCHAR(255) NOT NULL,
 	user_password VARCHAR(40) NOT NULL,
     
     PRIMARY KEY(user_id)
 );
-insert into users values(1, "John Doe", "abc");
-insert into users values(2, "Jane Doe", "123");
+insert into users values(1, "John Doe", "salty", "abc");
+insert into users values(2, "Jane Doe", "notsalty", "123");
 
    CREATE TABLE products(
     product_id INTEGER,

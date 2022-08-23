@@ -20,7 +20,7 @@ public class LoginController {
 			public void actionPerformed(ActionEvent e) {
 				//enter name/password -> unlock/show
 				if (!GUI.nameField.getText().isEmpty()) {
-					boolean boolExists = DB.checkPlayer(GUI.nameField.getText(), GUI.passwordField.getText());
+					boolean boolExists = DB.checkUser(GUI.nameField.getText(), GUI.passwordField.getText());
 					GUI.setLoginState(boolExists);
 				}
 			}
