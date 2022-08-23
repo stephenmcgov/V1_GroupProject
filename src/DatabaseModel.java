@@ -89,7 +89,7 @@ public class DatabaseModel {
 			    		 
 			    		 if(hpw.equals("["+stored_hpw+"]")) {
 			    			exists = true;
-			    		 	System.out.println("existing player:"+userName);
+			    		 	System.out.println("existing user:"+userName);
 			    		 }
 			    	 }
 			     }

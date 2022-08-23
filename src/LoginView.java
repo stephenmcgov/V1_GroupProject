@@ -22,7 +22,7 @@ public class LoginView {
 	
 	JButton resetButton = new JButton("Reset");
 	JButton submitButton = new JButton("Submit");
-	JLabel passwordLable = new JLabel("Password");
+	JLabel passwordLabel = new JLabel("Password");
 	JLabel userLabel = new JLabel("Username");
 	JButton exitButton = new JButton("Exit");
 	
@@ -35,12 +35,11 @@ public class LoginView {
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getFrame().getContentPane().setLayout(null);
 		
-		
 		userLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		userLabel.setBounds(129, 46, 72, 37);
 		
-		passwordLable.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
-		passwordLable.setBounds(129, 116, 77, 28);
+		passwordLabel.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
+		passwordLabel.setBounds(129, 116, 77, 28);
 		
 		nameField = (new JTextField());
 		nameField.setBounds(129, 81, 238, 37);
@@ -64,9 +63,8 @@ public class LoginView {
 		exitButton.setBackground(Color.LIGHT_GRAY);
 		exitButton.setBounds(296, 192, 72, 28);
 		
-		
 		getFrame().getContentPane().add(userLabel);
-		getFrame().getContentPane().add(passwordLable);
+		getFrame().getContentPane().add(passwordLabel);
 		getFrame().getContentPane().add(nameField);
 		getFrame().getContentPane().add(passwordField);
 		getFrame().getContentPane().add(resetButton);
@@ -93,37 +91,31 @@ public class LoginView {
 		boolean exists = boolExists;
 
 		if (exists) {
-			// show hidden elements
-			resetButton.setVisible(true);
-			exitButton.setVisible(true);
-
 			// hide login elements
 			nameField.setVisible(false);
 			passwordField.setVisible(false);
 			submitButton.setVisible(false);
-
-			// set name/password
+			passwordLabel.setVisible(false);
+			
+			// set name
 			userLabel.setText(nameField.getText());
-			// passwordLabel.setText("");
 		} else {
-			// set all vals / visibilities to default/login
+			// show error dialog
 			JOptionPane.showMessageDialog(submitButton,"Wrong password or username");
 		}
 	}
+	
 	public void resetPanel() {
 		// set all vals / visibilities to default/login
 		userLabel.setText("Enter Name");
-		passwordLable.setText("Enter Password");
+		passwordLabel.setText("Enter Password");
 		nameField.setText("");
 		passwordField.setText("");
-		submitButton.setVisible(false);
-
-		// hide clicker elements
-		resetButton.setVisible(false);
-		exitButton.setVisible(false);
-
+		
 		// show login elements
 		nameField.setVisible(true);
 		passwordField.setVisible(true);
+		submitButton.setVisible(true);
+		passwordLabel.setVisible(true);
 	}
 }
