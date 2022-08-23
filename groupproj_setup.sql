@@ -31,7 +31,7 @@ insert into products values(1, "Hoodie_Black", 10.99, "A cool black hoodie. Look
 insert into products values(2, "Hoodie_Grey", 09.99, "A nice grey hoodie. Looks comfy!", 999, ""); 
 
 CREATE TABLE orders(
-	purchase_id INTEGER,
+	purchase_id INTEGER auto_increment,
 	cid INTEGER NOT NULL,
     pid INTEGER NOT NULL,
     
@@ -39,6 +39,6 @@ CREATE TABLE orders(
 	FOREIGN KEY (cid) REFERENCES users(user_id),
 	FOREIGN KEY (pid) REFERENCES products(product_id)
 );
-insert into orders values(1, 1, 2);
-insert into orders values(2, 2, 1);
-SELECT * FROM users;
+insert into orders (cid, pid) values(1, 2);
+insert into orders (cid, pid) values(2, 1);
+SELECT * FROM products;
