@@ -5,7 +5,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		LoginGUIView loginGUI = new LoginGUIView();
+		LoginView loginGUI = new LoginView();
 		DatabaseModel DB = new DatabaseModel("root","root");
 		LoginController loginController = new LoginController(loginGUI, DB);
 		

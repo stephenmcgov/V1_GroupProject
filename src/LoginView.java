@@ -13,12 +13,12 @@ import java.awt.Dialog;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class LoginGUIView {
+public class LoginView {
 
 	private JFrame frame;
 	
-	private JTextField nameField;
-	private JPasswordField passwordField;
+	JTextField nameField;
+	JPasswordField passwordField;
 	
 	JButton resetButton = new JButton("Reset");
 	JButton submitButton = new JButton("Submit");
@@ -27,7 +27,7 @@ public class LoginGUIView {
 	JButton exitButton = new JButton("Exit");
 	
 	
-	public LoginGUIView() {
+	public LoginView() {
 		setFrame(new JFrame());
 		getFrame().getContentPane().setEnabled(false);
 		getFrame().getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -42,7 +42,7 @@ public class LoginGUIView {
 		passwordLable.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
 		passwordLable.setBounds(129, 116, 77, 28);
 		
-		nameField = new JTextField();
+		nameField = (new JTextField());
 		nameField.setBounds(129, 81, 238, 37);
 		nameField.setColumns(10);
 		
@@ -88,6 +88,7 @@ public class LoginGUIView {
 	public void setNameField(String name) {
 		userLabel.setText(nameField.getText());
 	}
+	
 	public void setLoginState(Boolean boolExists) {
 		boolean exists = boolExists;
 
@@ -108,8 +109,6 @@ public class LoginGUIView {
 			// set all vals / visibilities to default/login
 			JOptionPane.showMessageDialog(submitButton,"Wrong password or username");
 		}
-
-		
 	}
 	public void resetPanel() {
 		// set all vals / visibilities to default/login

@@ -19,33 +19,15 @@ public class LoginController {
 		GUI.submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//enter name/password -> unlock/show
-				if (!GUI.nameField.getText().isEmpty()) {
-					boolean boolExists = DB.checkPlayer(GUI.nameField.getText(), GUI.passwordField.getText());
-					GUI.setLoginState(boolExists);
-				}
+				boolean boolExists = DB.checkPlayer(GUI.nameField.getText(), GUI.passwordField.getText());
+				GUI.setLoginState(boolExists);
 			}
 		});
 				
-		GUI.nameField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				GUI.checkNameEmpty();
-			}
-		});
-		
 		//reset button
 		GUI.resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GUI.resetPanel();
-			}
-		});
-		
-		//quit button
-		GUI.quitButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//update DB in thread
-				//await response
-				System.exit(0);
 			}
 		});
 	}	
