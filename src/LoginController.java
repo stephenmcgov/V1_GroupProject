@@ -10,26 +10,19 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class LoginController {
-	private LoginView GUI;
+	private LoginGUIView GUI;
 	private DatabaseModel DB;
 
-	public LoginController(LoginView GUI, DatabaseModel DB) {
+	public LoginController(LoginGUIView GUI, DatabaseModel DB) {
 		//--ACTION LISTENERS
 		//submit login
 		GUI.submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//enter name/password -> unlock/show
 				if (!GUI.nameField.getText().isEmpty()) {
-					boolean boolExists = DB.checkPlayer(GUI.nameField.getText(), GUI.passwordField.getText());
+					boolean boolExists = DB.checkUser(GUI.nameField.getText(), GUI.passwordField.getText());
 					GUI.setLoginState(boolExists);
 				}
-			}
-		});
-				
-		GUI.nameField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				GUI.checkNameEmpty();
 			}
 		});
 		
@@ -41,7 +34,7 @@ public class LoginController {
 		});
 		
 		//quit button
-		GUI.quitButton.addActionListener(new ActionListener() {
+		GUI.exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//update DB in thread
 				//await response

@@ -17,8 +17,8 @@ public class LoginGUIView {
 
 	private JFrame frame;
 	
-	private JTextField nameField;
-	private JPasswordField passwordField;
+	JTextField nameField;
+	JPasswordField passwordField;
 	
 	JButton resetButton = new JButton("Reset");
 	JButton submitButton = new JButton("Submit");
