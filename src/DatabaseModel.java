@@ -66,8 +66,10 @@ public class DatabaseModel {
 				    		 byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
 				    		 hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
 				    		 String hpw = Arrays.toString(hashedPassword);
+				    		 //System.out.println(hpw);
+				    		 //System.out.println(stored_hpw);
 				    		 
-				    		 if(hpw.equals(stored_hpw)) {
+				    		 if(hpw.equals("["+stored_hpw+"]")) {
 				    			exists = true;
 				    		 	System.out.println("existing user:"+userName);
 				    		 }
