@@ -10,30 +10,21 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class LoginController {
-	private LoginGUIView GUI;
+	private LoginView GUI;
 	private DatabaseModel DB;
 
-	public LoginController(LoginGUIView GUI, DatabaseModel DB) {
+	public LoginController(LoginView GUI, DatabaseModel DB) {
 		//--ACTION LISTENERS
 		//submit login
 		GUI.submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//enter name/password -> unlock/show
-<<<<<<< HEAD
-				if (!GUI.nameField.getText().isEmpty()) {
-					boolean boolExists = DB.checkUser(GUI.nameField.getText(), GUI.passwordField.getText());
-					GUI.setLoginState(boolExists);
-				}
-			}
-		});
 		
-=======
 				boolean boolExists = DB.checkPlayer(GUI.nameField.getText(), GUI.passwordField.getText());
 				GUI.setLoginState(boolExists);
 			}
 		});
-				
->>>>>>> 5b151b61f37bfeaacf8ccad8ff2a0de53877ca74
+
 		//reset button
 		GUI.resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
