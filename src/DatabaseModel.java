@@ -25,8 +25,7 @@ public class DatabaseModel {
 			} 
 			catch (ClassNotFoundException e) {
 			    e.printStackTrace();
-			} 
-			
+			}
 			try {
 				String url = "jdbc:mysql://localhost:3306/store";
 				this.conn = DriverManager.getConnection(url,username,password);
@@ -51,6 +50,7 @@ public class DatabaseModel {
 		System.out.println("looking for user:"+userName+" "+password);
 		try {
 			this.stmt = conn.createStatement();
+			
 			String query = "SELECT * FROM users WHERE user_name LIKE '"+userName+"';";
 			try (Statement stmt = conn.createStatement()) {
 			     ResultSet rs = stmt.executeQuery(query);

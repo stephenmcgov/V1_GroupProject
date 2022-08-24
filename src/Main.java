@@ -12,6 +12,7 @@ public class Main {
 			public void run() {
 				try {
 					loginGUI.getFrame().setVisible(true);
+					System.out.println("running...");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
