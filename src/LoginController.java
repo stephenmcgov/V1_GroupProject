@@ -19,12 +19,13 @@ public class LoginController {
 		GUI.submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//enter name/password -> unlock/show
-		
-				boolean boolExists = DB.checkPlayer(GUI.nameField.getText(), GUI.passwordField.getText());
-				GUI.setLoginState(boolExists);
+				if (!GUI.nameField.getText().isEmpty()) {
+					//boolean boolExists = DB.checkUser(GUI.nameField.getText(), GUI.passwordField.getText());
+					GUI.setLoginState(true);
+				}
 			}
 		});
-
+		
 		//reset button
 		GUI.resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -35,6 +36,8 @@ public class LoginController {
 		//quit button
 		GUI.exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//update DB in thread
+				//await response
 				System.exit(0);
 			}
 		});
