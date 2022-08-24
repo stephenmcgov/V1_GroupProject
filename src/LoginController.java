@@ -19,17 +19,10 @@ public class LoginController {
 		GUI.submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//enter name/password -> unlock/show
-<<<<<<< HEAD
 				if (!GUI.nameField.getText().isEmpty()) {
 					//boolean boolExists = DB.checkUser(GUI.nameField.getText(), GUI.passwordField.getText());
 					GUI.setLoginState(true);
 				}
-=======
-		
-				//boolean boolExists = DB.checkUser(GUI.nameField.getText(), GUI.passwordField.getText());
-				boolean boolExists = true;
-				GUI.setLoginState(boolExists);
->>>>>>> cdba631e29ca20bdeb7ba7e866afa6ebb4bc57b6
 			}
 		});
 		

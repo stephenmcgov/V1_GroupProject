@@ -19,6 +19,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.JCheckBox;
 import javax.swing.JScrollBar;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JList;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class LoginView {
 
@@ -34,22 +39,33 @@ public class LoginView {
 	JLabel passwordLabel = new JLabel("Password");
 	JLabel userLabel = new JLabel("Username");
 	JButton exitButton = new JButton("Exit");
+	JButton viewCartButton = new JButton("View Cart");
+	
 	
 	private final JLabel lblNewLabel = new JLabel("hoodie");
-	private final JLabel lblNewLabel_1 = new JLabel("IMg1");
-	private final JLabel lblNewLabel_2 = new JLabel("13$");
-	private final JLabel lblNewLabel_3 = new JLabel("In Stock ");
+	private final JLabel imageLable1 = new JLabel("IMg1");
+	private final JLabel priceTwo = new JLabel("13$");
+	private final JLabel stock1 = new JLabel("In Stock ");
 	private final JLabel lblNewLabel_4 = new JLabel("hoodie");
-	private final JLabel lblNewLabel_1_1 = new JLabel("IMAGE2");
-	private final JLabel lblNewLabel_3_1 = new JLabel("In Stock ");
+	private final JLabel imageLable2 = new JLabel("IMAGE2");
+	private final JLabel stock2 = new JLabel("In Stock ");
 	private final JLabel lblNewLabel_4_1 = new JLabel("hoodie");
-	private JLabel lblNewLabel_1_1_1 = new JLabel(" ");
-	private final JLabel lblNewLabel_3_1_1 = new JLabel("only few left");
-	private final JLabel lblNewLabel_2_1 = new JLabel("14$");
-	private final JLabel lblNewLabel_2_2 = new JLabel("12$");
+	private JLabel imageLable3 = new JLabel("Image3");
+	private final JLabel stock3 = new JLabel("only few left");
+	private final JLabel priceThree = new JLabel("14$");
+	private final JLabel priceOne = new JLabel("12$");
 	private final JButton btnNewButton = new JButton("Add to cart ");
 	private final JButton btnNewButton_1 = new JButton("Add to cart ");
 	private final JButton btnNewButton_2 = new JButton("Add to cart ");
+	private final JLabel Discri_One = new JLabel("Confortable");
+	private final JLabel Discri_two = new JLabel("winter Wear");
+	private final JLabel Discri_three = new JLabel("Confortable");
+	private final JPanel panel = new JPanel();
+	private final JLabel cartLable = new JLabel("CART");
+	private final JLabel lblTotal = new JLabel("Total :");
+	private final JLabel priceTotal = new JLabel("----");
+	private final JButton checkoutButton = new JButton("CheckOut");
+	
 	
 	
     
@@ -58,7 +74,7 @@ public class LoginView {
 		setFrame(new JFrame());
 		getFrame().getContentPane().setEnabled(false);
 		getFrame().getContentPane().setBackground(Color.LIGHT_GRAY);
-		getFrame().setBounds(100, 100, 783, 528);
+		getFrame().setBounds(100, 100, 783, 592);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		userLabel.setBounds(10, 10, 72, 37);
 		
@@ -106,53 +122,53 @@ public class LoginView {
 		lblNewLabel.setBounds(26, 70, 88, 25);
 		
 		frame.getContentPane().add(lblNewLabel);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(21, 90, 132, 121);
+		imageLable1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		imageLable1.setBounds(21, 90, 132, 109);
 		
-		frame.getContentPane().add(lblNewLabel_1);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_2.setBounds(350, 221, 42, 25);
+		frame.getContentPane().add(imageLable1);
+		priceTwo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		priceTwo.setBounds(350, 221, 42, 25);
 		
-		frame.getContentPane().add(lblNewLabel_2);
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_3.setBounds(26, 221, 72, 25);
+		frame.getContentPane().add(priceTwo);
+		stock1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		stock1.setBounds(26, 221, 72, 25);
 		
-		frame.getContentPane().add(lblNewLabel_3);
+		frame.getContentPane().add(stock1);
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_4.setBounds(257, 70, 88, 25);
 		
 		frame.getContentPane().add(lblNewLabel_4);
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1_1.setBounds(257, 90, 132, 121);
+		imageLable2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		imageLable2.setBounds(257, 90, 132, 99);
 		icon = new ImageIcon("src/JK-217.PNG");
 	    scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-	    lblNewLabel_1_1_1.setIcon(new ImageIcon(scaledImage));
+	    imageLable3.setIcon(new ImageIcon(scaledImage));
 		
-		frame.getContentPane().add(lblNewLabel_1_1);
-		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_3_1.setBounds(254, 221, 72, 25);
+		frame.getContentPane().add(imageLable2);
+		stock2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		stock2.setBounds(254, 221, 72, 25);
 		
-		frame.getContentPane().add(lblNewLabel_3_1);
+		frame.getContentPane().add(stock2);
 		lblNewLabel_4_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_4_1.setBounds(470, 70, 88, 25);
 		
 		frame.getContentPane().add(lblNewLabel_4_1);
-		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1_1_1.setBounds(470, 90, 132, 121);
+		imageLable3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		imageLable3.setBounds(470, 90, 132, 99);
 		
-		frame.getContentPane().add(lblNewLabel_1_1_1);
-		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_3_1_1.setBounds(480, 221, 132, 25);
+		frame.getContentPane().add(imageLable3);
+		stock3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		stock3.setBounds(456, 221, 132, 25);
 		
-		frame.getContentPane().add(lblNewLabel_3_1_1);
-		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_2_1.setBounds(574, 221, 42, 25);
+		frame.getContentPane().add(stock3);
+		priceThree.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		priceThree.setBounds(574, 221, 42, 25);
 		
-		frame.getContentPane().add(lblNewLabel_2_1);
-		lblNewLabel_2_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_2_2.setBounds(111, 221, 42, 25);
+		frame.getContentPane().add(priceThree);
+		priceOne.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		priceOne.setBounds(111, 221, 42, 25);
 		
-		frame.getContentPane().add(lblNewLabel_2_2);
+		frame.getContentPane().add(priceOne);
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton.setBounds(26, 265, 126, 21);
 		
@@ -165,6 +181,46 @@ public class LoginView {
 		btnNewButton_2.setBounds(456, 267, 126, 21);
 		
 		frame.getContentPane().add(btnNewButton_2);
+		Discri_One.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		Discri_One.setBounds(26, 196, 127, 28);
+		
+		frame.getContentPane().add(Discri_One);
+		Discri_two.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		Discri_two.setBounds(257, 196, 127, 28);
+		
+		frame.getContentPane().add(Discri_two);
+		Discri_three.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		Discri_three.setBounds(456, 196, 127, 28);
+		
+		frame.getContentPane().add(Discri_three);
+		panel.setBackground(Color.DARK_GRAY);
+		panel.setBounds(10, 296, 284, 37);
+		
+		frame.getContentPane().add(panel);
+		panel.add(cartLable);
+		cartLable.setForeground(Color.WHITE);
+		cartLable.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		lblTotal.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblTotal.setBounds(220, 354, 74, 28);
+		
+		frame.getContentPane().add(lblTotal);
+		priceTotal.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		priceTotal.setBounds(291, 354, 74, 28);
+		
+		frame.getContentPane().add(priceTotal);
+		checkoutButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		checkoutButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		checkoutButton.setBounds(470, 352, 129, 37);
+		
+		frame.getContentPane().add(checkoutButton);
+		
+		viewCartButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		viewCartButton.setBounds(43, 350, 129, 37);
+		
+		frame.getContentPane().add(viewCartButton);
 		
 	}
 	public JFrame getFrame() {
