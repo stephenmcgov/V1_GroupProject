@@ -45,7 +45,7 @@ public class DatabaseModel {
 		this.loggedIn = loggedIn;
 	}
 	
-	public boolean checkPlayer(String userName, String password) {
+	public boolean checkUser(String userName, String password) {
 		boolean exists = false;
 		System.out.println("looking for user:"+userName+" "+password);
 		try {
