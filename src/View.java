@@ -30,8 +30,10 @@ public class View {
 	//init variables
 	Product newProduct = new Product();
 	ArrayList cart = new ArrayList();
+	ArrayList checkoutList = new ArrayList();
 	String cartString = "";
 	double total=0;
+	int stockCount;
 
 	//init form elements
 	JFrame frame;
@@ -288,7 +290,7 @@ public class View {
 			
 			//show other elements
 			logoutButton.setVisible(true);
-			exitButton.setVisible(true);
+			exitButton.setVisible(false);
 			
 			productNameLabel1.setVisible(true);
 			productNameLabel2.setVisible(true);
@@ -330,6 +332,8 @@ public class View {
 	
 	public void resetPanel() {
 		// set all vals / visibilities to default/login
+		cart.clear();
+		
 		userLabel.setText("Userame");
 		passwordLabel.setText("Password");
 		nameField.setText("");
@@ -392,47 +396,111 @@ public class View {
 		productNameLabel1.setText(newProduct.getProductName());
 		priceLabel1.setText("$"+String.valueOf(newProduct.getProductPrice()));
 		descLabel1.setText(newProduct.getProductDesc());
-		if (newProduct.getStockCount() > 0)
+		if (newProduct.getStockCount() > 0) {
 			stockLabel1.setText("In Stock:"+String.valueOf(newProduct.getStockCount()));
+			addCartBtn1.setEnabled(true);
+		}	
 		else
+		{
 			stockLabel1.setText("Out Of Stock!");
+			addCartBtn1.setEnabled(false);
+		}
 		
 		newProduct = (Product) receivedProductList.get(1);
 		productNameLabel2.setText(newProduct.getProductName());
 		priceLabel2.setText("$"+String.valueOf(newProduct.getProductPrice()));
 		descLabel2.setText(newProduct.getProductDesc());
-		if (newProduct.getStockCount() > 0)
+		if (newProduct.getStockCount() > 0) {
 			stockLabel2.setText("In Stock:"+String.valueOf(newProduct.getStockCount()));
+			addCartBtn2.setEnabled(true);
+		}	
 		else
+		{
 			stockLabel2.setText("Out Of Stock!");
+			addCartBtn2.setEnabled(false);
+		}
 		
 		newProduct = (Product) receivedProductList.get(2);
 		productNameLabel3.setText(newProduct.getProductName());
 		priceLabel3.setText("$"+String.valueOf(newProduct.getProductPrice()));
 		descLabel3.setText(newProduct.getProductDesc());
-		if (newProduct.getStockCount() > 0)
+		if (newProduct.getStockCount() > 0) {
 			stockLabel3.setText("In Stock:"+String.valueOf(newProduct.getStockCount()));
+			addCartBtn3.setEnabled(true);
+		}	
 		else
+		{
 			stockLabel3.setText("Out Of Stock!");
+			addCartBtn3.setEnabled(false);
+		}
 	}
 	
 	//add product received from db to cart arraylist
 	public void addToCart(Product clickedProduct) {
+		System.out.println(clickedProduct);
+		if(clickedProduct.getProductName().equals("Hoodie Black")) {
+			String removedText = stockLabel1.getText().replace("In Stock:", "");
+			stockCount = Integer.parseInt(removedText);
+			stockCount = stockCount-1;
+			System.out.println("Hoodie Black: "+stockCount);
+			if (stockCount > 0) {
+				stockLabel1.setText(String.valueOf("In Stock:"+String.valueOf(stockCount)));
+				addCartBtn1.setEnabled(true);
+			}	
+			else
+			{
+				stockLabel1.setText("Out Of Stock!");
+				addCartBtn1.setEnabled(false);
+			}
+		}
+		
+		else if(clickedProduct.getProductName().equals("Hoodie Grey")) {
+			String removedText = stockLabel2.getText().replace("In Stock:", "");
+			stockCount = Integer.parseInt(removedText);
+			stockCount = stockCount-1;
+			System.out.println("Hoodie Grey: "+stockCount);
+			if (stockCount > 0) {
+				stockLabel2.setText(String.valueOf("In Stock:"+String.valueOf(stockCount)));
+				addCartBtn2.setEnabled(true);
+			}	
+			else
+			{
+				stockLabel2.setText("Out Of Stock!");
+				addCartBtn2.setEnabled(false);
+			}
+		}
+		
+		else if(clickedProduct.getProductName().equals("Hoodie Red")) {
+			String removedText = stockLabel3.getText().replace("In Stock:", "");
+			stockCount = Integer.parseInt(removedText);
+			stockCount = stockCount-1;
+			System.out.println("Hoodie Red: "+stockCount);
+			if (stockCount > 0) {
+				stockLabel3.setText(String.valueOf("In Stock:"+String.valueOf(stockCount)));
+				addCartBtn3.setEnabled(true);
+			}	
+			else
+			{
+				stockLabel3.setText("Out Of Stock!");
+				addCartBtn3.setEnabled(false);
+			}
+		}
+		
 		cart.add(clickedProduct);
 	}
 	
 	//print contents of cart arraylist
 	public void printCart() {
-		//reset vars to prvent duplication
+		//reset vars to prevent duplication
 		cartString="";
 		total=0;
-				
+		
 		for (int i = 0; i < cart.size(); i++) {
 			newProduct = (Product) (cart.get(i));
 			cartString += newProduct.getProductName()+" $"+newProduct.getProductPrice()+"\n";
 			total+=newProduct.getProductPrice();
 		}
-		cartString += "Total: $"+total;
+		cartString += "Total: $"+Math.round(total * 100.0) / 100.0;
 		
 		if (total!=0)
 			JOptionPane.showMessageDialog(frame, "Your Order:\n"+cartString);
@@ -440,14 +508,43 @@ public class View {
 			JOptionPane.showMessageDialog(frame, "Nothing in Cart!");
 	}
 	
-	public void checkout() {
+	//public ArrayList checkout() {
+	public ArrayList checkout() {
+		//reset vars to prevent duplication
+		cartString="";
+		total=0;
+						
+		for (int i = 0; i < cart.size(); i++) {
+			newProduct = (Product) (cart.get(i));
+			cartString += newProduct.getProductName()+" $"+newProduct.getProductPrice()+"\n";
+			total+=newProduct.getProductPrice();
+		}
+		cartString += "Total: $"+total;
+		
 		if (total!=0) {
 			String[] options = {"Yes", "No"};
 	        int x = JOptionPane.showOptionDialog(null, "Your Order:\n"+cartString,
 	                "Confirm Purchase?",
 	                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+	        if(x==0) {
+	        	JOptionPane.showMessageDialog(frame, "Order Confirmed!");
+	        	System.out.println("cart: "+cart);
+	        	for (int i = 0; i < cart.size(); i++) {
+	        		checkoutList.add((Product) cart.get(i));
+	    		}
+	        	cart.clear();
+	        	//send order to DB
+	        	System.out.println("checkoutList: "+checkoutList);
+	        	return checkoutList;
+	        }
+	        	
+	        else
+	        	JOptionPane.showMessageDialog(frame, "Order Not Placed!");
 		}
 		else
 			JOptionPane.showMessageDialog(frame, "Nothing in Cart!");
+		
+		//order not confirmed so return null!
+		return null;
 	}
 }

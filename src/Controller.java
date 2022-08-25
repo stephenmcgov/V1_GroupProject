@@ -5,6 +5,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.event.ChangeEvent;
@@ -15,6 +16,7 @@ public class Controller {
 	private Model DB;
 	private Product clickedProduct;
 	ArrayList receivedProductList = new ArrayList();
+	ArrayList receivedCheckoutList = new ArrayList();
 
 	public Controller(View GUI, Model DB) {
 		//--ACTION LISTENERS
@@ -76,7 +78,15 @@ public class Controller {
 		//checkout button
 		GUI.checkoutButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GUI.checkout();
+				//GUI.checkout();
+				receivedCheckoutList = GUI.checkout();
+				//System.out.println("received: "+receivedCheckoutList);
+				try {
+					DB.updateStockCount(receivedCheckoutList);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		
